@@ -1,4 +1,4 @@
-package com.horacioss.automationtest.runnners;
+package com.horacioss.automationtest.runners;
 
 
 import io.cucumber.junit.CucumberOptions;
