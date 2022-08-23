@@ -1,3 +1,5 @@
+defaultTasks 'clean', 'test', 'aggregate'
+
 
 apply plugin: 'java'
 apply plugin: 'idea'
@@ -24,7 +26,7 @@ buildscript {
 }
 
 ext {
-    serenityCoreVersion = '3.3.0'
+    serenityCoreVersion = '3.3.2'
 }
 
 dependencies {
@@ -32,16 +34,27 @@ dependencies {
             "net.serenity-bdd:serenity-cucumber:${serenityCoreVersion}",
             "net.serenity-bdd:serenity-screenplay:${serenityCoreVersion}",
             "net.serenity-bdd:serenity-screenplay-webdriver:${serenityCoreVersion}"
-    implementation group: 'net.serenity-bdd', name: 'serenity-ensure', version: '3.2.1'
-    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.0'
+    implementation group: 'net.serenity-bdd', name: 'serenity-ensure', version: '3.3.2'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.9.0'
     testImplementation "net.serenity-bdd:serenity-ensure:${serenityCoreVersion}"
-    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.0'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.9.0'
 }
 
 test {
-    useJUnitPlatform()
+    systemProperties System.getProperties()
+    maxParallelForks = 8
+    systemProperty "file.encoding", "utf-8"
+    systemProperty "cucumber.options", System.getProperty("cucumber.options")
+}
+
+serenity {
+    testRoot = "automationtest"
+    // Specify the root directory of any Cucumber feature files
+    requirementsDir = "src/test/resources/features"
 }
 
 tasks.withType(JavaCompile) {
     options.encoding = 'UTF-8'
 }
+
+test.finalizedBy(aggregate)
