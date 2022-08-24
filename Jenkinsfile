@@ -5,12 +5,12 @@ pipeline {
         stage('Build'){
             steps {
                 sh 'git update-index --chmod=+x gradlew'
-                sh 'gradle build'
+                sh './gradlew build'
             }
         }
         stage('Test') {
             steps {
-                sh 'gradle clean test'
+                sh './gradlew clean test'
             }
         }
     }
