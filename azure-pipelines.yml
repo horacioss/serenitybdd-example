@@ -1,0 +1,39 @@
+name: $(SourceBranchName)-$(Date:yyyyMMdd)_$(Rev:.r)
+
+
+trigger:
+  - main
+
+
+stages:
+  - stage: build
+    jobs:
+      - job: gradle_build
+        displayName: Gradle Build
+        pool:
+          name: 'Default'
+          demands:
+            - agent.name -equals DESKTOP-J9HHN9L
+
+        steps:
+          - checkout: self
+            clean: true
+          - task: Gradle@2
+            displayName: gradlew build
+            inputs:
+              wrapperScript: gradlew
+              tasks: build -x test
+
+          - task: CmdLine@2
+            displayName: Automated Test
+            inputs:
+              script: |
+                ./gradlew clean test --tests "com.horacioss.automationtest.runners.RunnerTest"
+
+          - task: PublishCucumberReport@1
+            displayName: Publish Cucumber Report
+            inputs:
+              jsonDir: build/cucumber-reports
+              outputPath: build/cucumber-reports
+              theme: 'bootstrap'
+              reportSuiteAsScenarios: true
