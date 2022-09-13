@@ -25,7 +25,7 @@ pipeline {
                             allowMissing: false
                     ]
                 }
-                fail {
+                unsuccessful {
                     publishHTML target: [
                             reportName : 'Serenity',
                             reportDir:   'target/site/serenity',
