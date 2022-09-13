@@ -16,24 +16,10 @@ pipeline {
             }
             post {
                 success {
-                    publishHTML target: [
-                            reportName : 'Serenity',
-                            reportDir:   'target/site/serenity',
-                            reportFiles: 'index.html',
-                            keepAll:     true,
-                            alwaysLinkToLastBuild: true,
-                            allowMissing: false
-                    ]
+                    cucumber buildStatus: 'Serenity Tests', customCssFiles: '', customJsFiles: '', failedFeaturesNumber: -1, failedScenariosNumber: -1, failedStepsNumber: -1, fileIncludePattern: './build/cucumber-reports/json/*.json', pendingStepsNumber: -1, skippedStepsNumber: -1, sortingMethod: 'ALPHABETICAL', undefinedStepsNumber: -1
                 }
                 unsuccessful {
-                    publishHTML target: [
-                            reportName : 'Serenity',
-                            reportDir:   'target/site/serenity',
-                            reportFiles: 'index.html',
-                            keepAll:     true,
-                            alwaysLinkToLastBuild: true,
-                            allowMissing: false
-                    ]
+                    cucumber buildStatus: 'Serenity Tests', customCssFiles: '', customJsFiles: '', failedFeaturesNumber: -1, failedScenariosNumber: -1, failedStepsNumber: -1, fileIncludePattern: './build/cucumber-reports/json/*.json', pendingStepsNumber: -1, skippedStepsNumber: -1, sortingMethod: 'ALPHABETICAL', undefinedStepsNumber: -1
                 }
             }
         }
