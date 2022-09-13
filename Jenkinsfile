@@ -6,6 +6,7 @@ pipeline {
 
         stage('build'){
             steps {
+                sh 'whoami'
                 sh './gradlew build -x test '
             }
         }
