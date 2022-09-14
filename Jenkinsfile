@@ -20,7 +20,7 @@ pipeline {
 //                     cucumber buildStatus: 'Serenity Tests', customCssFiles: '', customJsFiles: '', failedFeaturesNumber: -1, failedScenariosNumber: -1, failedStepsNumber: -1, fileIncludePattern: '**/*.json', pendingStepsNumber: -1, skippedStepsNumber: -1, sortingMethod: 'ALPHABETICAL', undefinedStepsNumber: -1
                     publishHTML([ allowMissing: false,
                         alwaysLinkToLastBuild: false,
-                        includes: '**/**/**.*',
+                        includes: '**/*.*',
                         keepAll: false, reportDir:
                         'target/site/serenity',
                         reportFiles: 'index.html',
@@ -33,7 +33,7 @@ pipeline {
 //                     cucumber buildStatus: 'Serenity Tests', customCssFiles: '', customJsFiles: '', failedFeaturesNumber: -1, failedScenariosNumber: -1, failedStepsNumber: -1, fileIncludePattern: '**/*.json', pendingStepsNumber: -1, skippedStepsNumber: -1, sortingMethod: 'ALPHABETICAL', undefinedStepsNumber: -1
                     publishHTML([ allowMissing: false,
                         alwaysLinkToLastBuild: false,
-                        includes: '**/**/**.*',
+                        includes: '**/*.*',
                         keepAll: false, reportDir:
                         'target/site/serenity',
                         reportFiles: 'index.html',
