@@ -13,7 +13,7 @@ pipeline {
 
         stage('test') {
             steps {
-                sh './gradlew clean test'
+                sh './gradlew clean test aggregate'
             }
             post {
                 success {
