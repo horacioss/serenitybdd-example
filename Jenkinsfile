@@ -22,7 +22,7 @@ pipeline {
                         [
                             allowMissing: false,
                             alwaysLinkToLastBuild: false,
-                            includes: '**/*',
+                            includes: '^^/^',
                             keepAll: true,
                             reportDir: 'target/site/serenity',
                             reportFiles: 'index.html',
@@ -37,7 +37,7 @@ pipeline {
                         [
                             allowMissing: false,
                             alwaysLinkToLastBuild: false,
-                            includes: '**/*',
+                            includes: '^^/^',
                             keepAll: true,
                             reportDir: 'target/site/serenity',
                             reportFiles: 'index.html',
